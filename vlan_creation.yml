@@ -1,0 +1,17 @@
+---
+- name: Create VLAN 70
+  hosts: cisco
+  gather_facts: no
+
+  tasks:
+
+    - name: Create VLAN 70 interactively
+      ansible.netcommon.cli_command:
+        command: configure
+        prompt:
+          - ".*#"
+        answer:
+          - |
+            vlan database
+            vlan 70 name Testing
+            exit
