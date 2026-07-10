@@ -1,45 +1,45 @@
-# Cisco Small Business VLAN Automation using Ansible
+# Hi, I'm Umar Deen 👋
 
-## Overview
+## Network Engineer | Automation | Cloud
 
-Automated VLAN creation on a physical Cisco Small Business switch using Ansible over SSH.
+Network Engineer with 4+ years experience in:
+- Cisco Switching
+- Juniper Firewall
+- Linux Administration
+- Network Automation
+- AWS Cloud
 
-## Environment
+## Skills
 
-- Ubuntu Linux
-- Ansible 2.16
-- Cisco Small Business Switch
-- SSH
+🌐 Networking
+- VLAN
+- STP
+- DHCP
+- DNS
+- VPN
+- Routing
 
-## What this project does
+⚙️ Automation
+- Ansible
+- Python
+- Git
+- YAML
 
-- Connects to Cisco switch using Ansible
-- Handles legacy SSH compatibility
-- Automates VLAN creation
-- Verifies VLAN configuration
+☁️ Cloud
+- AWS EC2
+- Route53
+- ALB
+- Linux Servers
 
-## Problem Solved
+## Projects
 
-Cisco Small Business switches require interactive CLI configuration.
-Standard Ansible IOS VLAN modules were not compatible.
+🚀 Cisco VLAN Automation using Ansible
 
-Solution:
-Used ansible.netcommon.cli_command with interactive prompt handling.
+🚀 WireGuard VPN Deployment using Docker
 
-## VLANs Created
+🚀 AWS Network Lab
 
-| VLAN ID | Name |
-|---|---|
-|10|SALES|
-|60|TEST-ANSIBLE|
-|70|Testing|
+## Contact
 
-## Verification
-
-Command:
-
-show vlan
-
-Output:
-
-VLANs successfully created.
+LinkedIn: your-link
+Website: umardeen.com
