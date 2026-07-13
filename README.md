@@ -41,5 +41,5 @@ Network Engineer with 5+ years experience in:
 
 ## Contact
 
-LinkedIn: your-link
+LinkedIn: https://www.linkedin.com/in/umar-deen-8323491a1/
 Website: umardeen.com
