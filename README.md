@@ -37,8 +37,6 @@ Learning project focused on network automation with Ansible, starting from a sin
 └── README.md
 ```
 
-*(Update this tree as the repo structure evolves.)*
-
 ## Roadmap / Next Steps
 
 - [ ] Identify exact switch vendor/model to tailor trunk, VTP/MST, and check-mode guidance
