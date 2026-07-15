@@ -1,11 +1,9 @@
 ---
-- name: Create VLAN 70
+- name: Configure VLANs 10-20 and trunk ports
   hosts: cisco
   gather_facts: no
-
   tasks:
-
-    - name: Create VLAN 70 interactively
+    - name: Create VLAN {{ item.id }}
       ansible.netcommon.cli_command:
         command: configure
         prompt:
@@ -13,5 +11,48 @@
         answer:
           - |
             vlan database
-            vlan 70 name Testing
+            vlan {{ item.id }} name {{ item.name }}
             exit
+      loop: "{{ vlans }}"
+
+    - name: Configure switch1 fa1-24 as trunk with native VLAN 10
+      ansible.netcommon.cli_command:
+        command: configure
+        prompt:
+          - ".*#"
+        answer:
+          - |
+            interface range fastethernet 1-24
+            switchport mode trunk
+            switchport trunk native vlan {{ native_vlan }}
+            exit
+      when: inventory_hostname == "switch1"
+
+    - name: Configure switch2 gi1-24 as trunk with native VLAN 10
+      ansible.netcommon.cli_command:
+        command: configure
+        prompt:
+          - ".*#"
+        answer:
+          - |
+            interface range GigabitEthernet 1-24
+            switchport mode general
+            switchport general allowed vlan add 10 untagged
+            switchport general allowed vlan add 12-20 tagged
+            switchport trunk native vlan {{ native_vlan }}
+            exit
+      when: inventory_hostname == "switch2"
+
+    - name: Disable CLI pagination
+      ansible.netcommon.cli_command:
+        command: terminal datadump
+
+    - name: Check VLAN table
+      ansible.netcommon.cli_command:
+        command: show vlan
+        timeout: 60
+      register: vlan_output
+
+    - name: Show VLAN table
+      debug:
+        var: vlan_output.stdout_lines
